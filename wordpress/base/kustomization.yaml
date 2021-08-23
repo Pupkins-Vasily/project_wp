@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - service-wp.yaml
+  - deployment-wp.yaml
+  - ingress-wp.yaml
+  - service-mysql-wp.yaml
+  - deployment-mysql-wp.yaml
+  - pvc-mysql-wp.yaml
+  - pv-mysql-wp.yaml
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=password123

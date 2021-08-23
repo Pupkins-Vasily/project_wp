@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-mysql-wp
+  labels:
+    type: nfs
+    name: mysql-wp-nfs-vol
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /mnt/IT-Academy/nfs-data/sa2-17-21/rartyomov/project/mysql/
+    server: 192.168.37.105

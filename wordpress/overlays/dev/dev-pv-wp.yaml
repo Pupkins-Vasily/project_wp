@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-wp
+  labels:
+    type: nfs
+    name: wp-nfs-vol
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /mnt/IT-Academy/nfs-data/sa2-17-21/rartyomov/project/dev/wp/
+    server: 192.168.37.105

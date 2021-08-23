@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namePrefix: prod-
+namespace: project-prod
+resources:
+  - ../../base
+  - namespace.yaml
+patchesStrategicMerge:
+  - prod-ingress-wp.yaml
+  - prod-pv-mysql-wp.yaml
+  - prod-deployment-wp.yaml
+secretGenerator:
+- name: prod-mysql-pass
+  behavior: create
+  literals:
+    - password=password123
+images:
+- name: wordpress
+  newTag: 5.4-apache
